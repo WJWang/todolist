@@ -12,7 +12,7 @@ const debugDB = debug('ToDoList:Database');
 debugDB('Loading Models...');
 
 const TODOLIST_DB = process.env.TODOLIST_DB || 'mysql://root:root@localhost:8889/todolist';
-const RESET_DB = process.env.RESET_DB || true;
+const RESET_DB = process.env.RESET_DB || false;
 
 export const sequelize = new Sequelize(TODOLIST_DB, {
   sync: {
@@ -44,6 +44,18 @@ export function migrationData() {
     try {
       await Event.create({
         name: 'TEST INIT',
+      });
+
+      await Event.create({
+        name: 'TEST INIT2',
+      });
+
+      await Event.create({
+        name: 'TEST INIT3',
+      });
+
+      await Event.create({
+        name: 'TEST INI4',
       });
 
       return resolve();

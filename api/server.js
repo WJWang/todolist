@@ -7,9 +7,11 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 
 // Routes
-import AuthRouter, {
+import {
   aclInjector,
 } from './routes/auth.js';
+
+import EventRouter from './routes/event.js';
 
 const debugServer = debug('ToDoList:Server');
 
@@ -34,7 +36,7 @@ if (NODE_ENV !== 'production') {
 app.use(bodyParser.json());
 
 // app.use('/auth', AuthRouter);
-
+app.use('/events', EventRouter);
 app.use(aclInjector);
 
 app.listen(PORT, (err) => {
