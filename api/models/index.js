@@ -2,18 +2,19 @@ import Sequelize from 'sequelize';
 import debug from 'debug';
 import Promise from 'bluebird';
 
-import MemberModel from './Member.js';
-import RoleModel from './Role.js';
-import RoleActionModel from './RoleAction.js';
+// import MemberModel from './Member.js';
+// import RoleModel from './Role.js';
+// import RoleActionModel from './RoleAction.js';
+import EventModel from './Event.js';
 
-const debugDB = debug('YiGuang:Database');
+const debugDB = debug('ToDoList:Database');
 
 debugDB('Loading Models...');
 
-const YIGUANG_DB = process.env.YIGUANG_DB || 'mariadb://rytass:rytass2O15@localhost/yiguang';
-const RESET_DB = process.env.RESET_DB || false;
+const TODOLIST_DB = process.env.TODOLIST_DB || 'mysql://root:root@localhost:8889/todolist';
+const RESET_DB = process.env.RESET_DB || true;
 
-export const sequelize = new Sequelize(YIGUANG_DB, {
+export const sequelize = new Sequelize(TODOLIST_DB, {
   sync: {
     force: !!RESET_DB,
   },
@@ -26,13 +27,13 @@ export const sequelize = new Sequelize(YIGUANG_DB, {
 
 export default sequelize;
 
-export const Member = new MemberModel(sequelize);
-export const Role = new RoleModel(sequelize);
-export const RoleAction = new RoleActionModel(sequelize);
+export const Event = new EventModel(sequelize);
+// export const Role = new RoleModel(sequelize);
+// export const RoleAction = new RoleActionModel(sequelize);
 
-Member.associate(sequelize.models);
-Role.associate(sequelize.models);
-RoleAction.associate(sequelize.models);
+// Member.associate(sequelize.models);
+// Role.associate(sequelize.models);
+// EventModel.associate(sequelize.models);
 
 export function migrationData() {
   return new Promise(async (resolve, reject) => {
@@ -41,11 +42,8 @@ export function migrationData() {
     }
 
     try {
-      await Member.create({
-        account: process.env.ADMIN_ACCOUNT || 'admin',
-        password: process.env.ADMIN_PASSWORD || 'admin',
-        name: process.env.ADMIN_NAME || 'Rytass',
-        phone: process.env.ADMIN_PHONE || '0988111111',
+      await Event.create({
+        name: 'TEST INIT',
       });
 
       return resolve();

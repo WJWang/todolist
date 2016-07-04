@@ -8,8 +8,8 @@ import {
   RoleAction,
 } from '../models/index.js';
 
-const JWT_TOKEN = process.env.JWT_TOKEN || '_YiGuang*Rytass$';
-const debugACL = debug('YiGuang:ACL');
+const JWT_TOKEN = process.env.JWT_TOKEN || '_ToDoList*Rytass$';
+const debugACL = debug('ToDoList:ACL');
 
 const keeper = new RouteKeeper();
 const router = new Router();

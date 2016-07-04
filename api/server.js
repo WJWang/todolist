@@ -11,7 +11,7 @@ import AuthRouter, {
   aclInjector,
 } from './routes/auth.js';
 
-const debugServer = debug('YiGuang:Server');
+const debugServer = debug('ToDoList:Server');
 
 // Sync Server
 (async () => {
@@ -33,7 +33,7 @@ if (NODE_ENV !== 'production') {
 
 app.use(bodyParser.json());
 
-app.use('/auth', AuthRouter);
+// app.use('/auth', AuthRouter);
 
 app.use(aclInjector);
 

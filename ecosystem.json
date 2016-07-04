@@ -1,21 +1,21 @@
 {
   "apps": [{
     "cwd": "api",
-    "name": "YiGuang_API",
+    "name": "ToDoList_API",
     "script": "runDev.js",
     "env": {
       "PORT": 9910,
-      "DEBUG": "YiGuang:*",
-      "YIGUANG_DB": "mariadb://rytass:rytass2O15@localhost/yiguang",
+      "DEBUG": "ToDoList:*",
+      "TODOLIST_DB": "mysql://root:root@localhost:8889/todolist",
       "NODE_ENV": "development",
     },
     "watch": true,
   }, {
     "cwd": "admin",
-    "name": "YiGuang_Admin",
+    "name": "ToDoList_Admin",
     "script": "runDev.js",
     "env": {
-      "DEBUG": "YiGuang:*",
+      "DEBUG": "ToDoList:*",
       "NODE_ENV": "development",
       "PORT": 9900,
     },
